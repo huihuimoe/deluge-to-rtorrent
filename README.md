@@ -1,7 +1,9 @@
 # deluge-to-rtorrent
 Custom scripts I use to move torrents from deluge to rtorrent
 
-First, I am a Fedora user.  For other distros, please do what is needed
+Fork from [wseedbox/deluge-to-rtorrent](https://github.com/wseedbox/deluge-to-rtorrent)
+
+Update command to make [rtorrent 0.9 compatible](https://github.com/rakshasa/rtorrent/blob/master/doc/scripts/update_commands_0.9.sed).
 
 ## Files
 
@@ -10,14 +12,19 @@ First, I am a Fedora user.  For other distros, please do what is needed
 
 ## Requirements
 
+for Debian
+```bash
+sudo apt update
+sudo apt install dh-make-perl xmlrpc-c deluge-console
+mkdir perl && cd perl
+dh-make-perl -build -cpan Convert::Bencode_XS
+sudo dpkg -i *.deb
+cd .. && rm -rf perl
+```
+
 ### Programs
 * deluge-console: This is required to read info and do operations from deluge.
 * xmlrpc: This is used to make calls to rtorrent
-
-### Optional
-
-I have a preference for pyroscope's tools. There is one called "rtxmlrpc" that can be used in place of xmlrpc.  They do the same thing, but
-
 
 ## Setup
 
