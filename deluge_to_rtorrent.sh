@@ -63,8 +63,10 @@ if [[ $? -ne 0 ]]; then
   exit 10
 fi
 
-# remove the torrent from deluge
+# pause and remove the torrent from deluge
+$dc pause $torrentid
 $dc rm $torrentid
+sleep 3
 
 $xmlrpc_command load.start "" ${tmpdir}/${torrentid}_fast.torrent
 sleep 3
